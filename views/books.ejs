@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Books</title>
+    <style type="text/css">
+		body{
+			background-color: #428CC4;
+			text-align: center;
+			}
+            #input{
+                border-radius: 7px;
+                border-style: hidden;
+                height: 35px;
+                width: 30%;
+                margin-bottom: 2px;
+            }
+            #input::placeholder{
+                text-align: center;
+            }
+            
+            #btn{
+                background-color: rgba(247, 7, 7, 0.726);
+                color: aliceblue;
+                border-style: hidden;
+                margin-top: 5px;
+                border-radius: 7px;
+                height: 35px;
+            }
+            #btn:hover{
+                cursor: pointer;
+                background-color: aliceblue;
+                color: black;
+            }
+            #btn1{
+                background-color: rgba(7, 35, 247, 0.915);
+                
+                border-style: hidden;
+                border-radius: 7px;
+                height: 35px;
+            }
+            #btn1:hover{
+                cursor: pointer;
+                background-color: rgba(247, 7, 7, 0.726);
+                color: black;
+            }
+            #link{
+                text-decoration: none;
+                color: aliceblue;
+            }
+            #search{
+                background-color: rgba(247, 7, 7, 0.726);
+                color: aliceblue;
+                border-style: hidden;
+                border-radius: 7px;
+                height: 35px;
+            }
+            #search:hover{
+                cursor: pointer;
+            }
+		
+	</style>
+</head>
+<body>
+    <form >
+        <input id="input" type="text" name="q" value="<%=q %>" />
+        <input id="search" type="submit" value="search"></br>
+    </form>
+    <div>
+        <h1>
+            My Books
+        </h1>
+        <!-- book shelf -->
+            <% for (let book of fbooks) { %>
+                <div>
+                    <p>Book ID : <%= book.Id %></p>
+                    <p>Book Title : <%= book.Title %></p>
+                    <p>Book Author : <%= book.Author %></p>
+                    <button id="btn1"><a id="link" href="/updatebook?Id=<%= book.Id %>">Edit</a></button>
+                    <button id="btn1"><a id="link" href="/deletebook?Id=<%= book.Id %>">Remove</a></button>
+                    
+                <hr>
+                </div>
+            <% } %>
+    </div>
+    <br>
+    <h1>Add New Book</h1>
+    <div>
+            <form action="/addbook" method="post">
+               <input id="input" type="text" name="Title" placeholder="Title of the book..." >
+               <br>
+               <input id="input" type="text" name="Author" placeholder="Author of the book...">
+               <br>
+               <button id="btn" type="submit">Add book</button>
+           </form>
+
+    </div>
+</body>
+</html>
